@@ -7,7 +7,6 @@ Download articles of Qiita in Zenn format.
 |---|---|---|
 |From|Qiita| https://qiita.com/ikawaha/items/ab9906581e34f26993a9|
 |To|Zenn| https://zenn.dev/ikawaha/articles/qiita-ab9906581e34f26993a9|
-```
 
 # Install
 
