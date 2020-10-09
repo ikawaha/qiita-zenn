@@ -10,7 +10,7 @@ import (
 )
 
 var ZennTmpl = `---
-title: "{{ .Title }}"
+title: "{{ replace .Title "\"" "\\\"" }}"
 emoji: "{{ .Emoji }}"
 type: "{{ .Type }}"
 topics: [{{ join .Topics "," }}]
@@ -49,7 +49,8 @@ func NewZennArticleFromArticle(a qiita.Article) ZennArticle {
 }
 
 var tmpl = template.Must(template.New("zenn").Funcs(template.FuncMap{
-	"join": strings.Join,
+	"join":    strings.Join,
+	"replace": strings.ReplaceAll,
 }).Parse(ZennTmpl))
 
 func (a ZennArticle) Write(w io.Writer) error {
