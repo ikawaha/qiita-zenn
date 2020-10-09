@@ -54,5 +54,8 @@ var tmpl = template.Must(template.New("zenn").Funcs(template.FuncMap{
 }).Parse(ZennTmpl))
 
 func (a ZennArticle) Write(w io.Writer) error {
+	if rs := []rune(a.Title); len(rs) > 60 {
+		a.Title = string([]rune(a.Title)[:60])
+	}
 	return tmpl.Execute(w, a)
 }
