@@ -122,7 +122,8 @@ func saveImage(dir, url string) error {
 }
 
 func saveArticle(dir, prefix string, publish bool, a qiita.Article) error {
-	slug := prefix + path.Base(a.URL) + ".md"
+	date := a.CreatedAt.Format("20060102-")
+	slug := prefix + date + path.Base(a.URL) + ".md"
 	z := zenn.NewZennArticleFromArticle(a)
 	z.Published = publish
 	f, err := os.Create(filepath.Join(dir, slug))
